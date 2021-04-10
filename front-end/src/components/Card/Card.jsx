@@ -3,13 +3,19 @@ import React from 'react';
 import { Box, Image, Flex } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 
-const Card = () => {
+const Card = ({ hero }) => {
   const isMarked = false;
+  const { name, thumbnail } = hero;
   return (
     <Box overflow='hidden' borderWidth='1px' bg='#fff'>
-      <Image src='https://picsum.photos/300/300' alt='name character' />
+      <Image
+        src={`${thumbnail.path}.${thumbnail.extension}`}
+        alt={`Image ${name}`}
+        boxSize='300px'
+      />
+      <Box bg='red' h={1} w='100%'></Box>
       <Flex p='6' directon='row' justify='space-between' align='center'>
-        Name Character
+        {name}
         <StarIcon h='5' w='5' color={isMarked ? 'red' : '#ccc'} />
       </Flex>
     </Box>
