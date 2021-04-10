@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Box,
   Heading,
@@ -20,13 +21,19 @@ const Header = () => {
           </Box>
           <Spacer />
           <Box>
-            <Button colorScheme='red' mr='4'>
-              Characters
-            </Button>
-            <Button colorScheme='red' mr='4'>
-              Comics
-            </Button>
-            <Button colorScheme='red'>Log in</Button>
+            <Link to='/characters'>
+              <Button colorScheme='red' mr='4'>
+                Characters
+              </Button>
+            </Link>
+            <Link to='/comics'>
+              <Button colorScheme='red' mr='4'>
+                Comics
+              </Button>
+            </Link>
+            <Link to='/login'>
+              <Button colorScheme='red'>Login</Button>
+            </Link>
           </Box>
         </Flex>
       </Container>
