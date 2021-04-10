@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from '../components/Header/Header';
+import Card from '../components/Card/Card';
 
-import { Container, SimpleGrid, Box, Image, Flex } from '@chakra-ui/react';
-import { StarIcon } from '@chakra-ui/icons';
+import { Container, SimpleGrid } from '@chakra-ui/react';
 
 const Characters = () => {
   const isMarked = false;
@@ -11,27 +11,7 @@ const Characters = () => {
       <Header />
       <Container maxW='container.lg' p='6'>
         <SimpleGrid columns={3} spacing={10}>
-          <Box overflow='hidden' borderWidth='1px' bg='#fff'>
-            <Image src='https://picsum.photos/300/300' alt='name character' />
-            <Flex p='6' directon='row' justify='space-between' align='center'>
-              Name Character
-              <StarIcon h='5' w='5' color={isMarked ? 'red' : '#ccc'} />
-            </Flex>
-          </Box>
-          <Box overflow='hidden' borderWidth='1px' bg='#fff'>
-            <Image src='https://picsum.photos/300/300' alt='name character' />
-            <Flex p='6' directon='row' justify='space-between' align='center'>
-              Name Character
-              <StarIcon h='5' w='5' color={isMarked ? 'red' : '#ccc'} />
-            </Flex>
-          </Box>
-          <Box overflow='hidden' borderWidth='1px' bg='#fff'>
-            <Image src='https://picsum.photos/300/300' alt='name character' />
-            <Flex p='6' directon='row' justify='space-between' align='center'>
-              Name Character
-              <StarIcon h='5' w='5' color={isMarked ? 'red' : '#ccc'} />
-            </Flex>
-          </Box>
+          <Card />
         </SimpleGrid>
       </Container>
     </div>
