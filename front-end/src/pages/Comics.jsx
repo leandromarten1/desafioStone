@@ -7,10 +7,10 @@ import { fetchResponseByType } from '../services/apiMarvel';
 import { Container, SimpleGrid } from '@chakra-ui/react';
 
 const Comics = () => {
-  const [heros, setHeros] = useState([]);
+  const [comics, setComics] = useState([]);
   useEffect(() => {
     fetchResponseByType('comics').then(({ data: { data: { results } } }) =>
-      console.log(results),
+      setComics(results),
     );
   }, []);
 
@@ -19,8 +19,8 @@ const Comics = () => {
       <Header />
       <Container maxW='container.lg' p='6'>
         <SimpleGrid columns={3} spacing={10}>
-          {heros.map((hero) => (
-            <Card hero={hero} key={hero.id} />
+          {comics.map((comic) => (
+            <Card info={comic} key={comic.id} />
           ))}
         </SimpleGrid>
       </Container>

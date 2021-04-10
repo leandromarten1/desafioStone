@@ -3,9 +3,9 @@ import React from 'react';
 import { Box, Image, Flex } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 
-const Card = ({ hero }) => {
+const Card = ({ info }) => {
   const isMarked = false;
-  const { name, thumbnail, title } = hero;
+  const { name, thumbnail, title } = info;
   return (
     <Box overflow='hidden' borderWidth='1px' bg='#fff'>
       <Image

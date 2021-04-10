@@ -20,7 +20,7 @@ const Characters = () => {
       <Container maxW='container.lg' p='6'>
         <SimpleGrid columns={3} spacing={10}>
           {heros.map((hero) => (
-            <Card hero={hero} key={hero.id} />
+            <Card info={hero} key={hero.id} />
           ))}
         </SimpleGrid>
       </Container>
