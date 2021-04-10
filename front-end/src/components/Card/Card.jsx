@@ -5,7 +5,7 @@ import { StarIcon } from '@chakra-ui/icons';
 
 const Card = ({ hero }) => {
   const isMarked = false;
-  const { name, thumbnail } = hero;
+  const { name, thumbnail, title } = hero;
   return (
     <Box overflow='hidden' borderWidth='1px' bg='#fff'>
       <Image
@@ -15,7 +15,7 @@ const Card = ({ hero }) => {
       />
       <Box bg='red' h={1} w='100%'></Box>
       <Flex p='6' directon='row' justify='space-between' align='center'>
-        {name}
+        {name || title}
         <StarIcon h='5' w='5' color={isMarked ? 'red' : '#ccc'} />
       </Flex>
     </Box>
