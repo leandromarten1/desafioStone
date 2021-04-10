@@ -3,7 +3,7 @@ import Header from '../components/Header/Header';
 import Card from '../components/Card/Card';
 import Loading from '../components/Loading/Loading';
 
-import { fetchResponseByType } from '../services/apiMarvel';
+import { fetchByType } from '../services/apiMarvel';
 
 import { Container, SimpleGrid } from '@chakra-ui/react';
 
@@ -11,16 +11,10 @@ const Characters = () => {
   const [heros, setHeros] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    fetchResponseByType('characters').then(
-      ({
-        data: {
-          data: { results },
-        },
-      }) => {
-        setIsLoading(false);
-        setHeros(results);
-      },
-    );
+    fetchByType('characters').then((res) => {
+      setIsLoading(false);
+      setHeros(res.results);
+    });
   }, []);
 
   return (
