@@ -42,7 +42,7 @@ const Signup = () => {
             value={formik.values.name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            placeholder='you@domain.com'
+            placeholder='Your name'
           />
           {formik.touched.name && (
             <FormHelperText textColor='red'>
