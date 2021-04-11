@@ -1,10 +1,5 @@
 const phrases = [
   {
-    phrase:
-      'Capitão América: Fica grandão na armadura né. E sem ela o que você é?\nHomem de Ferro: Gênio, bilionário, playboy, filantropo.',
-    author: 'Os Vingadores',
-  },
-  {
     phrase: 'Não vou lutar a sua guerra. Vou acabar com ela.',
     author: 'Capitã Marvel',
   },

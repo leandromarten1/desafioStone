@@ -3,7 +3,7 @@ import Login from './pages/Login';
 // import Home from './pages/Home';
 import Characters from './pages/Characters';
 import Comics from './pages/Comics';
-import Details from './pages/Details';
+import CharacterDetails from './pages/CharacterDetails';
 
 function App() {
   return (
@@ -11,10 +11,10 @@ function App() {
       <Route exact path='/'>
         <Redirect to='/characters' />
       </Route>
-      <Route path='/login' component={Login} />
-      <Route path='/characters' component={Characters} />
-      <Route path='/details' component={Details} />
-      <Route path='/comics' component={Comics} />
+      <Route exact path='/login' component={Login} />
+      <Route exact path='/characters' component={Characters} />
+      <Route exact path='/characters/:id' component={CharacterDetails} />
+      <Route exact path='/comics' component={Comics} />
       {/* <Route path='/comics/:id' component={Comics} /> */}
     </Switch>
   );

@@ -12,8 +12,8 @@ const Comics = () => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     fetchByType('comics').then((res) => {
-      setIsLoading(false);
       setComics(res.results);
+      setIsLoading(false);
     });
   }, []);
 
