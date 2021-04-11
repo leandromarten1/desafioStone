@@ -15,9 +15,11 @@ const Header = () => {
       <Container maxW='container.lg' p='6'>
         <Flex align='center'>
           <Box p='2'>
-            <Heading size='lg' color='#fff'>
-              NERDVEL
-            </Heading>
+            <Link to='/'>
+              <Heading size='lg' color='#fff'>
+                NERDVEL
+              </Heading>
+            </Link>
           </Box>
           <Spacer />
           <Box>

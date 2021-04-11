@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header/Header';
 import Card from '../components/Card/Card';
 import Loading from '../components/Loading/Loading';
@@ -11,9 +11,7 @@ import { Container, SimpleGrid } from '@chakra-ui/react';
 const Characters = () => {
   const [heros, setHeros] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [input, setInput] = useState(undefined);
-
-  const handleFetch = async (name) => {};
+  const [input, setInput] = useState('');
 
   useEffect(() => {
     fetchByType('characters').then((res) => {

@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Characters from './pages/Characters';
 import Comics from './pages/Comics';
 import CharacterDetails from './pages/CharacterDetails';
+import ComicDetails from './pages/ComicDetails';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Route exact path='/characters' component={Characters} />
       <Route exact path='/characters/:id' component={CharacterDetails} />
       <Route exact path='/comics' component={Comics} />
-      {/* <Route path='/comics/:id' component={Comics} /> */}
+      <Route path='/comics/:id' component={ComicsDetails} />
     </Switch>
   );
 }
