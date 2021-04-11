@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   const salt = 10;
   try {
     bcrypt.hash(password, salt, async (_err, hash) => {
-      await Users.create({ nome, email, password: hash });
+      await Users.create({ name, email, password: hash });
     });
     return res.status(201).json({ message: 'user created successfully' });
   } catch (err) {

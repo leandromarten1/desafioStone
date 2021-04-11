@@ -4,6 +4,7 @@ const { generateToken } = require('../middlewares');
 const bcrypt = require('bcrypt');
 
 router.post('/', async (req, res) => {
+  console.log('aqui chegou');
   const { email, password } = req.body;
   const user = await Users.findOne({ where: { email } });
 
@@ -18,7 +19,7 @@ router.post('/', async (req, res) => {
         return res.status(401).json({ message: 'Invalid Password' });
       }
       if (user && result) {
-        const token = createToken(userWithoutPassword);
+        const token = generateToken(userWithoutPassword);
         return res.status(200).json({ token, userWithoutPassword });
       }
     });

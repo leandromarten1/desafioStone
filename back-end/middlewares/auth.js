@@ -6,14 +6,14 @@ const auth = async (req, res, next) => {
     const token = req.headers.authorization;
 
     if (!token) {
-      return res.status(401).json({ message: 'Token inválido' });
+      return res.status(401).json({ message: 'Invalid Token' });
     }
 
     const user = jwt.verify(token, secret);
     req.user = user;
     next();
   } catch (err) {
-    return res.status(500).json({ message: 'Token inválido' });
+    return res.status(500).json({ message: 'Invalid Token' });
   }
 };
 
