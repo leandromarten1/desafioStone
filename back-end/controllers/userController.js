@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Users } = require('../models');
-const { authentication, generateToken } = require('../middlewares');
+const { authentication } = require('../middlewares');
 
 const bcrypt = require('bcrypt');
 
@@ -58,3 +58,5 @@ router.patch('/:id', authentication, async (req, res) => {
     return res.status(500).json({ message: 'Server error', err });
   }
 });
+
+module.exports = router;
