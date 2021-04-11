@@ -14,11 +14,6 @@ const phrases = [
   },
   {
     phrase:
-      '– Eu sou inevitável.\n– E eu sou o Homem de Ferro.\n(Diálogo entre Thanos e Homem de Ferro)',
-    author: 'Vingadores: Ultimato',
-  },
-  {
-    phrase:
       'Com tempo vocês vão saber o que é perder. Ter a absoluta certeza de que estão certos, mas falhar da mesma forma.',
     author: 'Thanos - Vingadores: Guerra Infinita',
   },
