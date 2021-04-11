@@ -16,7 +16,7 @@ function App() {
       <Route exact path='/characters' component={Characters} />
       <Route exact path='/characters/:id' component={CharacterDetails} />
       <Route exact path='/comics' component={Comics} />
-      <Route path='/comics/:id' component={ComicsDetails} />
+      <Route path='/comics/:id' component={ComicDetails} />
     </Switch>
   );
 }

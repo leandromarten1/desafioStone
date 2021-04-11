@@ -17,19 +17,19 @@ import {
   UnorderedList,
 } from '@chakra-ui/react';
 
-const CharacterDetails = () => {
+const ComicDetails = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [details, setDetails] = useState({});
 
   useEffect(() => {
-    fetchById('characters', id).then((res) => {
+    fetchById('comics', id).then((res) => {
       setDetails(res.results[0]);
       setIsLoading(false);
     });
   }, [id]);
 
-  const { name, thumbnail, description, comics } = details;
+  const { title, thumbnail, description, characters } = details;
   return (
     <div>
       <Header />
@@ -41,7 +41,7 @@ const CharacterDetails = () => {
             <Box w='40%'>
               <Image
                 src={`${thumbnail.path}.${thumbnail.extension}`}
-                alt={`Image ${name}`}
+                alt={`Image ${title}`}
                 boxSize='300px'
                 border='1px'
               />
@@ -49,29 +49,28 @@ const CharacterDetails = () => {
             <Spacer />
             <Box w='70%'>
               <Text fontSize='4xl' mb={4}>
-                {name}
+                {title}
               </Text>
+
               <Text mb={4}>
-                {description
-                  ? description
-                  : 'This character has no description'}
+                {description ? description : 'This Comic has no description.'}
               </Text>
               <Text fontSize='2xl' mb={4}>
-                Comics:
+                Characters:
               </Text>
               <UnorderedList>
-                {comics.items.length === 0 ? (
-                  <ListItem>No Results</ListItem>
+                {characters.items.length === 0 ? (
+                  <ListItem>No results</ListItem>
                 ) : (
-                  comics.items.map((comic) => (
-                    <ListItem key={comic.id}>
+                  characters.items.map((char) => (
+                    <ListItem key={char.id}>
                       <Link
-                        to={`/comics/${getResourceId(
-                          comic.resourceURI,
-                          'comics',
+                        to={`/characters/${getResourceId(
+                          char.resourceURI,
+                          'characters',
                         )}`}
                       >
-                        {comic.name}
+                        {char.name}
                       </Link>
                     </ListItem>
                   ))
@@ -85,4 +84,4 @@ const CharacterDetails = () => {
   );
 };
 
-export default CharacterDetails;
+export default ComicDetails;
