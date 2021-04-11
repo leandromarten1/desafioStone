@@ -11,15 +11,16 @@ const Card = ({ info }) => {
   const { id, name, thumbnail, title } = info;
 
   const addFavorite = (info) => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     if (!favorites.some((fav) => fav.id === info.id)) {
       favorites.push(info);
+      setIsMarked(favorites);
     } else {
-      favorites.splice(favorites.indexOf(info), 1);
+      favorites = favorites.filter((fav) => fav.id !== info.id);
+      setIsMarked(favorites);
     }
 
     localStorage.setItem('favorites', JSON.stringify(favorites));
-    setIsMarked(favorites);
   };
 
   return (

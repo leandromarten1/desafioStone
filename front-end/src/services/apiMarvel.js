@@ -26,7 +26,14 @@ export const fetchById = (resource, id) => {
 };
 
 export const fetchByName = (resource, name) => {
-  return fetchResponse(resource, `nameStartsWith=${name}&${authParams}`).then(
-    ({ data: { data } }) => data,
-  );
+  if (resource === 'characters') {
+    return fetchResponse(resource, `nameStartsWith=${name}&${authParams}`).then(
+      ({ data: { data } }) => data,
+    );
+  } else {
+    return fetchResponse(
+      resource,
+      `titleStartsWith=${name}&${authParams}`,
+    ).then(({ data: { data } }) => data);
+  }
 };
