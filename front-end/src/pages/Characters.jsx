@@ -28,9 +28,7 @@ const Characters = () => {
   }, []);
 
   const handleMoreData = async () => {
-    console.log('requisição: ', config.len);
     await fetchMoreData('characters', config.offset).then((res) => {
-      console.log(res.results);
       setHeros([...heros, ...res.results]);
     });
     setConfig({ len: heros.length * 10, offset: config.offset + 20 });
