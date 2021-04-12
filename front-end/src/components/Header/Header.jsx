@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 
 const Header = () => {
+  const isLogged = JSON.parse(localStorage.getItem('token'));
   return (
     <Box background='#7f8c8d'>
       <Container maxW='container.lg' p='6'>
@@ -33,9 +34,22 @@ const Header = () => {
                 Comics
               </Button>
             </Link>
-            <Link to='/login'>
-              <Button colorScheme='red'>Login</Button>
-            </Link>
+            {isLogged ? (
+              <>
+                <Link to='/favorites'>
+                  <Button colorScheme='red' mr='4'>
+                    My favorites
+                  </Button>
+                </Link>
+                <Link to='/logout'>
+                  <Button colorScheme='red'>Logout</Button>
+                </Link>
+              </>
+            ) : (
+              <Link to='/login'>
+                <Button colorScheme='red'>Login</Button>
+              </Link>
+            )}
           </Box>
         </Flex>
       </Container>
