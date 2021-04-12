@@ -10,17 +10,21 @@ const Card = ({ info }) => {
   );
   const { id, name, thumbnail, title } = info;
 
-  const addFavorite = (info) => {
+  const addFavorite = (id, name, title, thumbnail) => {
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    if (!favorites.some((fav) => fav.id === info.id)) {
-      favorites.push(info);
+    if (!favorites.some((fav) => fav.id === id)) {
+      favorites.push({ id, name, title, thumbnail });
       setIsMarked(favorites);
     } else {
-      favorites = favorites.filter((fav) => fav.id !== info.id);
+      favorites = favorites.filter((fav) => fav.id !== id);
       setIsMarked(favorites);
     }
 
     localStorage.setItem('favorites', JSON.stringify(favorites));
+  };
+
+  const favs = (id) => {
+    return isMarked.some((e) => e.id === id);
   };
 
   return (
@@ -40,8 +44,8 @@ const Card = ({ info }) => {
         <StarIcon
           h='5'
           w='5'
-          color={isMarked.includes(info) ? 'red' : '#ccc'}
-          onClick={() => addFavorite(info)}
+          color={favs(id) ? 'red' : '#ccc'}
+          onClick={() => addFavorite(id, name, title, thumbnail)}
         />
       </Flex>
     </Box>

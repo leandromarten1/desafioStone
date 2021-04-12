@@ -16,6 +16,8 @@ import {
   Button,
 } from '@chakra-ui/react';
 
+import { getFavorites } from '../utils/handleStorage';
+
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid Email').required('This field is Required'),
   password: yup.string().required('This field is Required'),
@@ -29,6 +31,8 @@ const Login = () => {
       try {
         const { data } = await apiLogin(email, password);
         localStorage.token = JSON.stringify({ data });
+        const favorites = getFavorites();
+        localStorage.favorites = JSON.stringify(favorites);
         history.push('/');
       } catch (err) {
         console.log(err);
