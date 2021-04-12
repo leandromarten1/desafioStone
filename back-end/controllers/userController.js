@@ -29,6 +29,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', authentication, async (req, res) => {
   const { name, email, password } = req.body;
   const { id } = req.params;
+  const salt = 10;
 
   const isUser = await Users.findByPk(id);
   if (!isUser) {
@@ -36,7 +37,9 @@ router.put('/:id', authentication, async (req, res) => {
   }
 
   try {
-    await Users.update({ name, email, password }, { where: { id } });
+    bcrypt.hash(password, salt, async (_err, hash) => {
+      await Users.update({ name, email, password: hash }, { where: { id } });
+    });
     return res.status(200).json({ message: 'User updated' });
   } catch (err) {
     return res.status(500).json({ message: 'Server error', err });
