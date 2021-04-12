@@ -1,6 +1,6 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Login from './pages/Login';
-// import Home from './pages/Home';
+import Signup from './pages/Signup';
 import Characters from './pages/Characters';
 import Comics from './pages/Comics';
 import CharacterDetails from './pages/CharacterDetails';
@@ -14,6 +14,7 @@ function App() {
         <Redirect to='/characters' />
       </Route>
       <Route exact path='/login' component={Login} />
+      <Route exact path='/signup' component={Signup} />
       <Route exact path='/characters' component={Characters} />
       <Route exact path='/characters/:id' component={CharacterDetails} />
       <Route exact path='/comics' component={Comics} />

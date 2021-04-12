@@ -1,10 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-
-import { apiLogin } from '../services/api';
-
 import {
   Container,
   Flex,
@@ -17,24 +13,19 @@ import {
 } from '@chakra-ui/react';
 
 const validationSchema = yup.object().shape({
+  name: yup.string().required('This field is Required'),
   email: yup.string().email('Invalid Email').required('This field is Required'),
   password: yup.string().required('This field is Required'),
 });
 
-const Login = () => {
+const Signup = () => {
   const formik = useFormik({
-    onSubmit: async (values, _form) => {
-      // const { email, password } = values;
-      // try {
-      //   const response = await apiLogin(email, password);
-      //   console.log(response);
-      // } catch (err) {
-      //   console.log(err);
-      // }
+    onSubmit: (values, _form) => {
       console.log(values);
     },
     validationSchema,
     initialValues: {
+      name: '',
       email: '',
       password: '',
     },
@@ -42,7 +33,23 @@ const Login = () => {
   return (
     <Container p='6'>
       <Flex flexDirection='column'>
-        <Heading mb={8}>Login</Heading>
+        <Heading mb={8}>Sign up for Nerdvel</Heading>
+
+        <FormControl id='name' mb={8} isRequired>
+          <FormLabel>Name</FormLabel>
+          <Input
+            type='text'
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            placeholder='Your name'
+          />
+          {formik.touched.name && (
+            <FormHelperText textColor='red'>
+              {formik.errors.name}
+            </FormHelperText>
+          )}
+        </FormControl>
 
         <FormControl id='email' mb={8} isRequired>
           <FormLabel>Email</FormLabel>
@@ -83,16 +90,11 @@ const Login = () => {
           onClick={formik.handleSubmit}
           isLoading={formik.isSubmitting}
         >
-          Login
+          Create Account
         </Button>
-        <Link to='/signup'>
-          <Button colorScheme='blackAlpha' w='100%'>
-            Create Account
-          </Button>
-        </Link>
       </Flex>
     </Container>
   );
 };
 
-export default Login;
+export default Signup;
