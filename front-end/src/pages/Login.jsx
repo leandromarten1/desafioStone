@@ -24,13 +24,14 @@ const validationSchema = yup.object().shape({
 const Login = () => {
   const formik = useFormik({
     onSubmit: async (values, _form) => {
-      const { email, password } = values;
-      try {
-        const response = await apiLogin(email, password);
-        console.log(response);
-      } catch (err) {
-        console.log(err);
-      }
+      // const { email, password } = values;
+      // try {
+      //   const response = await apiLogin(email, password);
+      //   console.log(response);
+      // } catch (err) {
+      //   console.log(err);
+      // }
+      console.log(values);
     },
     validationSchema,
     initialValues: {
