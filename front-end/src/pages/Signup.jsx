@@ -28,7 +28,7 @@ const Signup = () => {
   const formik = useFormik({
     onSubmit: async (values, _form) => {
       await apiSignup(values.name, values.email, values.password);
-      history.push('/');
+      history.push('/login');
     },
     validationSchema,
     initialValues: {

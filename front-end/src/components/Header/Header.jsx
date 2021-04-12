@@ -48,6 +48,11 @@ const Header = () => {
                     My favorites
                   </Button>
                 </Link>
+                <Link to='/my'>
+                  <Button colorScheme='red' mr='4'>
+                    My account
+                  </Button>
+                </Link>
                 <Button onClick={handleLogout} colorScheme='red'>
                   Logout
                 </Button>
