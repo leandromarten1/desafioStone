@@ -13,9 +13,9 @@ const Favorites = () => {
   const token = getToken();
   const user = getUser();
 
-  const save = async (id, favorites, token) => {
-    const response = await saveFavorites(id, favorites, token);
-    console.log(response);
+  const save = async (id, token) => {
+    const favs = JSON.parse(localStorage.getItem('favorites'));
+    await saveFavorites(id, favs, token);
   };
 
   return (
@@ -27,7 +27,7 @@ const Favorites = () => {
             Your favorites Comics and Characters:
           </Heading>
           {favorites.length > 0 && (
-            <Button onClick={() => save(user.id, favorites, token)} bg='#ccc'>
+            <Button onClick={() => save(user.id, token)} bg='#ccc'>
               Save favorites
             </Button>
           )}
