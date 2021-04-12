@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import {
@@ -10,7 +11,10 @@ import {
   FormLabel,
   FormHelperText,
   Button,
+  Text,
 } from '@chakra-ui/react';
+
+import { apiSignup } from '../services/api';
 
 const validationSchema = yup.object().shape({
   name: yup.string().required('This field is Required'),
@@ -19,9 +23,21 @@ const validationSchema = yup.object().shape({
 });
 
 const Signup = () => {
+  const [message, setMessage] = useState(null);
+  const history = useHistory();
   const formik = useFormik({
-    onSubmit: (values, _form) => {
-      console.log(values);
+    onSubmit: async (values, _form) => {
+      try {
+        const { data } = await apiSignup(
+          values.name,
+          values.email,
+          values.password,
+        );
+        console.log(data);
+        history.push('/');
+      } catch (err) {
+        setMessage(err);
+      }
     },
     validationSchema,
     initialValues: {
@@ -34,7 +50,7 @@ const Signup = () => {
     <Container p='6'>
       <Flex flexDirection='column'>
         <Heading mb={8}>Sign up for Nerdvel</Heading>
-
+        {message && <Text>{message}</Text>}
         <FormControl id='name' mb={8} isRequired>
           <FormLabel>Name</FormLabel>
           <Input

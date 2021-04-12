@@ -4,7 +4,6 @@ const { generateToken } = require('../middlewares');
 const bcrypt = require('bcrypt');
 
 router.post('/', async (req, res) => {
-  console.log('aqui chegou');
   const { email, password } = req.body;
   const user = await Users.findOne({ where: { email } });
 

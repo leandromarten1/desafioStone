@@ -6,7 +6,8 @@ module.exports = {
         {
           name: 'admin',
           email: 'admin@admin.com',
-          password: '123456',
+          password:
+            '$2b$10$DmtkAuNlG7DyD3qAcKMOiObKmYQAN.ii4ax.v.NIM8ogu8zxJhyeO',
         },
       ],
       {},

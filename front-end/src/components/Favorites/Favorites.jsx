@@ -9,7 +9,7 @@ import { Container, SimpleGrid, Heading, Button, Flex } from '@chakra-ui/react';
 import { getUser, getToken } from '../../utils/handleStorage';
 
 const Favorites = () => {
-  const favorites = JSON.parse(localStorage.getItem('favorites'));
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   const token = getToken();
   const user = getUser();
 

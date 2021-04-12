@@ -29,14 +29,7 @@ const MyAccount = () => {
   const formik = useFormik({
     onSubmit: async (values, _form) => {
       const pwd = values.newPassword || values.password;
-      const { data } = await updateUser(
-        user.id,
-        values.name,
-        values.email,
-        pwd,
-        token,
-      );
-      console.log(data);
+      await updateUser(user.id, values.name, values.email, pwd, token);
     },
     validationSchema,
     initialValues: {
