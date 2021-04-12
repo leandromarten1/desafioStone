@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
@@ -16,22 +16,27 @@ import {
   Button,
 } from '@chakra-ui/react';
 
+import { getFavorites } from '../utils/handleStorage';
+
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid Email').required('This field is Required'),
   password: yup.string().required('This field is Required'),
 });
 
 const Login = () => {
+  const history = useHistory();
   const formik = useFormik({
     onSubmit: async (values, _form) => {
-      // const { email, password } = values;
-      // try {
-      //   const response = await apiLogin(email, password);
-      //   console.log(response);
-      // } catch (err) {
-      //   console.log(err);
-      // }
-      console.log(values);
+      const { email, password } = values;
+      try {
+        const { data } = await apiLogin(email, password);
+        localStorage.token = JSON.stringify({ data });
+        const favorites = getFavorites();
+        localStorage.favorites = JSON.stringify(favorites);
+        history.push('/');
+      } catch (err) {
+        console.log(err);
+      }
     },
     validationSchema,
     initialValues: {
