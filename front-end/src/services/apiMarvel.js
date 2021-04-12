@@ -19,6 +19,12 @@ export const fetchByType = (resource) => {
   );
 };
 
+export const fetchMoreData = (resource, offset) => {
+  return fetchResponse(`${resource}`, `offset=${offset}&${authParams}`).then(
+    ({ data: { data } }) => data,
+  );
+};
+
 export const fetchById = (resource, id) => {
   return fetchResponse(`${resource}/${id}`, authParams).then(
     ({ data: { data } }) => data,
