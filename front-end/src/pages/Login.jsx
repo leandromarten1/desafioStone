@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+
+import { apiLogin } from '../services/api';
+
 import {
   Container,
   Flex,
@@ -20,8 +23,14 @@ const validationSchema = yup.object().shape({
 
 const Login = () => {
   const formik = useFormik({
-    onSubmit: (values, _form) => {
-      console.log(values);
+    onSubmit: async (values, _form) => {
+      const { email, password } = values;
+      try {
+        const response = await apiLogin(email, password);
+        console.log(response);
+      } catch (err) {
+        console.log(err);
+      }
     },
     validationSchema,
     initialValues: {
