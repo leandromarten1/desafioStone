@@ -46,6 +46,8 @@ $ npm install
 
 # Inicie o Servidor
 $ npm run dev
+#ou
+$ npm start 
 
 # O servidor inciará na porta:3001
 ```
@@ -70,7 +72,7 @@ $ npm start
 Foram utilizados no desenvolvimento:
 
 * [React](https://pt-br.reactjs.org/) 
-* [Chakra UI](https://getbootstrap.com/)
+* [Chakra UI](https://v0.chakra-ui.com/)
 * [Node](https://nodejs.org/en/)
 * [MySQL](https://www.mysql.com/)
 
