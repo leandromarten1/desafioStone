@@ -50,22 +50,29 @@ const Characters = () => {
   return (
     <div>
       <Header />
-      {isLoading && <Loading />}
-      <Container maxW='container.lg' p='6'>
-        <Search handleChange={handleChange} handleSubmit={handleSubmit} />
-        <InfiniteScroll
-          dataLength={config.len}
-          next={handleMoreData}
-          hasMore={true}
-          loader={'loading'}
-        >
-          <SimpleGrid columns={3} spacing={10}>
-            {heros.map((hero) => (
-              <Card info={hero} key={hero.id} />
-            ))}
-          </SimpleGrid>
-        </InfiniteScroll>
-      </Container>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <Container maxW='container.lg' p='6'>
+          <Search
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            resource='characters'
+          />
+          <InfiniteScroll
+            dataLength={config.len}
+            next={handleMoreData}
+            hasMore={true}
+            loader={'loading'}
+          >
+            <SimpleGrid columns={3} spacing={10}>
+              {heros.map((hero) => (
+                <Card info={hero} key={hero.id} />
+              ))}
+            </SimpleGrid>
+          </InfiniteScroll>
+        </Container>
+      )}
     </div>
   );
 };
